@@ -8,7 +8,7 @@ namespace BenDingActive
     [Guid("67475F7D-57A1-45AD-96F3-428A679B2E6C")]
     public class MacActiveX : ActiveXControl
     {  //居民保险
-        private ResidentMedicalInsurance _resident=new ResidentMedicalInsurance();
+        private ResidentMedicalInsuranceService _resident=new ResidentMedicalInsuranceService();
         /// <summary>
         /// 获取基础信息
         /// </summary>

@@ -118,6 +118,12 @@ namespace BenDingActive.Xml
                // return null;
             }
         }
+        /// <summary>
+        /// 实体转换为model
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static T DeSerializerModel<T>( T t)
         {
             var result = t;

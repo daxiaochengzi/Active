@@ -16,7 +16,7 @@ namespace BenDingForm
 {
     public partial class Form1 : Form
     {
-        ResidentMedicalInsurance _residentd = new ResidentMedicalInsurance();
+        ResidentMedicalInsuranceService _residentd = new ResidentMedicalInsuranceService();
         HisBaseParam _hisBase=new HisBaseParam()
         {
 

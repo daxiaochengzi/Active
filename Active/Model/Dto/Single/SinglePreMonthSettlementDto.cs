@@ -8,7 +8,7 @@ namespace BenDingActive.Model.Dto.Single
 {/// <summary>
  /// 单病种 精神病住院月结汇总
  /// </summary>
-    public class SinglePreMonthSettlementDto
+    public class SinglePreMonthSettlementDto:IniDto
     {/// <summary>
      /// 汇总流水号
      /// </summary>

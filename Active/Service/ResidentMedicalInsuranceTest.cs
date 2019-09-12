@@ -20,7 +20,7 @@ namespace BenDingActive.Service
 {
     public class ResidentMedicalInsuranceTest
     {
-        private ResidentMedicalInsurance Resident = new ResidentMedicalInsurance();
+        private ResidentMedicalInsuranceService Resident = new ResidentMedicalInsuranceService();
         //public ApiJsonResultData GetUserInfo()
         //{
         //    var resultData = new ApiJsonResultData();

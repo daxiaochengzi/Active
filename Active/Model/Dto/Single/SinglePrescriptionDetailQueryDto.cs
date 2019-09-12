@@ -8,7 +8,7 @@ namespace BenDingActive.Model.Dto.Single
 {/// <summary>
 /// 处方查询单数
 /// </summary>
-  public  class SinglePrescriptionDetailQueryDto:IniDto
+   public  class SinglePrescriptionDetailQueryDto:IniDto
     { 
         public PrescriptionDetailQueryRow PI_CFMX { get; set; }
     }

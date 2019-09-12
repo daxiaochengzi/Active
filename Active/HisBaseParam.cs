@@ -32,8 +32,12 @@ namespace BenDingActive.Model
         /// </summary>
         public string TransKey { get; set; }
         /// <summary>
-        /// 个人医保编号
+        /// 医生编号
         /// </summary>
         public string EmpIDCode { get; set; }
+        /// <summary>
+        /// 身份证
+        /// </summary>
+        public string IdCard { get; set; }
     }
 }
