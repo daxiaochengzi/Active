@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/Active/bin/Debug
+/Active/obj
+/BenDingForm/bin/Debug
+/BenDingForm/obj
+/packages/Newtonsoft.Json.11.0.2
+/WindowsFormsApp1/obj/Debug
