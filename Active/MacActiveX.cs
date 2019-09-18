@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace BenDingActive
 {
-    [Guid("67475F7D-57A1-45AD-96F3-428A679B2E6C")]
+    [Guid("65D8E97F-D3E2-462A-B389-241D7C38C518")]
     public class MacActiveX : ActiveXControl
     {  //居民保险
         private ResidentMedicalInsuranceService _resident=new ResidentMedicalInsuranceService();
@@ -18,7 +18,7 @@ namespace BenDingActive
         public string GetUserInfo(string param,string baseParam)
         {
             var data = _resident.GetUserInfo(param, JsonConvert.DeserializeObject<HisBaseParam>(baseParam));
-             return data;
+             return param;
          }
         /// <summary>
         /// 入院登记
@@ -42,7 +42,10 @@ namespace BenDingActive
             var data = _resident.HospitalizationModify(param, JsonConvert.DeserializeObject<HisBaseParam>(baseParam));
             return data;
         }
-        
 
+        public string GetMacAddress()
+        {
+            return "777";
+        }
     }
 }

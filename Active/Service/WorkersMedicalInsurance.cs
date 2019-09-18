@@ -35,12 +35,12 @@ namespace BenDing.Service
         /// <param name="po_ybbxztsm">医保报销状态说明</param>
         /// <param name="Po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="Po_msg">系统错误信息</param>
-        [DllImport("yyjk.dll", EntryPoint = "hqgrjbzl")]
+        [DllImport("yyjk.dll", EntryPoint = "hqgrjbzl", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int ChangeNumber(string pi_sfbz, string pi_crbz, string pi_xzqh,
-         out string po_grshbzh, out string po_xm, out string po_xb, out string po_csny,
-         out string po_zglb, out string po_lxdz, out string po_lxdh, out string po_sfzh,
-         out string po_sznl, out string po_dwmc, out string Po_cbzt, out string po_grzhye,
-         out string po_ybtszt, out string po_ybbxztsm, out string Po_fhz, out string Po_msg
+       StringBuilder po_grshbzh,StringBuilder po_xm,StringBuilder po_xb,StringBuilder po_csny,
+       StringBuilder po_zglb,StringBuilder po_lxdz,StringBuilder po_lxdh,StringBuilder po_sfzh,
+       StringBuilder po_sznl,StringBuilder po_dwmc,StringBuilder Po_cbzt,StringBuilder po_grzhye,
+       StringBuilder po_ybtszt,StringBuilder po_ybbxztsm,StringBuilder Po_fhz,StringBuilder Po_msg
         );
         /// <summary>
         ///2.获取个人基本资料（工伤医疗）
@@ -63,11 +63,11 @@ namespace BenDing.Service
         /// <param name="po_ybbxztsm">医保报销状态说明</param>
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
-        [DllImport("yyjk.dll", EntryPoint = "hqgrjbzl_gs")]
-        public static extern int hqgrjbzl_gs(string pi_sfbz, string pi_crbz, string pi_xzqh, out string po_grshbzh, out string po_xm,
-            out string po_xb, out string po_csny, out string po_zglb,
-            out string po_lxdz, out string po_lxdh, out string po_sfzh, out string po_sznl, out string po_dwmc,
-            out string po_cbzt, out string po_ybtszt, out string po_ybbxztsm, out string po_fhz, out string po_msg
+        [DllImport("yyjk.dll", EntryPoint = "hqgrjbzl_gs", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        public static extern int hqgrjbzl_gs(string pi_sfbz, string pi_crbz, string pi_xzqh,StringBuilder po_grshbzh,StringBuilder po_xm,
+          StringBuilder po_xb,StringBuilder po_csny,StringBuilder po_zglb,
+          StringBuilder po_lxdz,StringBuilder po_lxdh,StringBuilder po_sfzh,StringBuilder po_sznl,StringBuilder po_dwmc,
+          StringBuilder po_cbzt,StringBuilder po_ybtszt,StringBuilder po_ybbxztsm,StringBuilder po_fhz,StringBuilder po_msg
          );
         /// <summary>
         /// 住院登记
@@ -94,12 +94,12 @@ namespace BenDing.Service
         /// <param name="pi_cwh">床位号</param>
         /// <param name="pi_yyzyh">住院号</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "zydj")]
+        [DllImport("yyjk.dll", EntryPoint = "zydj", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int zydj(string pi_sfbz, string pi_crbz, string pi_xzqh, string pi_yybh, 
             string pi_yllb, string pi_ryrq, string pi_icd10, string pi_icd10_2, string pi_icd10_3, string pi_ryzd,
             string pi_zybq, string pi_cwh, string pi_yyzyh ,string pi_jbr,
-            out string po_zyh, out string po_spbh, out string po_bnyzycs, out string po_bntcyzfje, out string po_bntckzfje,
-            out string po_fhz, out string po_msg);
+          StringBuilder po_zyh,StringBuilder po_spbh,StringBuilder po_bnyzycs,StringBuilder po_bntcyzfje,StringBuilder po_bntckzfje,
+          StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 4.住院资料全部修改
         /// </summary>
@@ -117,10 +117,10 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "zyzlxgall")]
+        [DllImport("yyjk.dll", EntryPoint = "zyzlxgall", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int zyzlxgall(string pi_fwjgh, string  pi_zyh, string pi_xzqh, string pi_ryrq,
             string pi_icd10, string pi_icd10_2, string pi_icd10_3, string pi_ryzd, string pi_zybq, string pi_cwh,string pi_yyzyh ,
-            out string po_fhz,out string po_msg);
+          StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 住院费用计算
         /// </summary>
@@ -150,13 +150,13 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "fyjs_new")]
+        [DllImport("yyjk.dll", EntryPoint = "fyjs_new", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int fyjs_new(string pi_fwjgh, string pi_zyh, string pi_xzqh, string pi_cszl, string pi_czy, string pi_cyrq,
             string pi_cyqk, string pi_icd10, string pi_icd10_2, string pi_icd10_3, string pi_cyzd,
-            out string PO_FYZE,out string PO_TCZF, out string PO_BCZF, out string PO_ZXJJ,
-            out string PO_GWYBT,out string PO_GWYBZ,out string PO_QTZF,out string PO_ZHZF,
-            out string PO_XJZF,out string PO_qfje, out string PO_DJH ,out string po_bz,
-            out string po_fhz,out string po_msg);
+          StringBuilder PO_FYZE,StringBuilder PO_TCZF,StringBuilder PO_BCZF,StringBuilder PO_ZXJJ,
+          StringBuilder PO_GWYBT,StringBuilder PO_GWYBZ,StringBuilder PO_QTZF,StringBuilder PO_ZHZF,
+          StringBuilder PO_XJZF,StringBuilder PO_qfje,StringBuilder PO_DJH ,StringBuilder po_bz,
+          StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 住院费用预计算
         /// </summary>
@@ -180,15 +180,15 @@ namespace BenDing.Service
         /// <param name="Po_bz">备注</param>
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
-        [DllImport("yyjk.dll", EntryPoint = "fyyjs_new")]
+        [DllImport("yyjk.dll", EntryPoint = "fyyjs_new", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int fyyjs_new(string pi_fwjgh, string pi_zyh, string pi_xzqh, string pi_cszl, string pi_czy,string pi_cyrq,
-            out string PO_FYZE, out string PO_TCZF,
-            out string po_bczf, out string po_zxjj,
-            out string PO_GWYBT, out string PO_GWYBZ,
-            out string Po_qtzf, out string PO_ZHZF,
-            out string PO_XJZF, out string PO_qfje,
-            out string PO_DJH, out string Po_bz,
-            out string po_fhz, out string po_msg);
+          StringBuilder PO_FYZE,StringBuilder PO_TCZF,
+          StringBuilder po_bczf,StringBuilder po_zxjj,
+          StringBuilder PO_GWYBT,StringBuilder PO_GWYBZ,
+          StringBuilder Po_qtzf,StringBuilder PO_ZHZF,
+          StringBuilder PO_XJZF,StringBuilder PO_qfje,
+          StringBuilder PO_DJH,StringBuilder Po_bz,
+          StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 结算取消
         /// </summary>
@@ -202,9 +202,9 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "qxjs")]
+        [DllImport("yyjk.dll", EntryPoint = "qxjs", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int qxjs(string pi_xzqh, string pi_fwjgh, string pi_zyh, string pi_djh, string pi_qxcd, string pi_jbr,
-            out string po_knbz,out string po_fhz,out string po_msg);
+          StringBuilder po_knbz,StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 查询费用结算结果
         /// </summary>
@@ -225,12 +225,12 @@ namespace BenDing.Service
         /// <param name="PO_FHZ">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="PO_MSG">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "hqfyjsjg_new")]
+        [DllImport("yyjk.dll", EntryPoint = "hqfyjsjg_new", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int hqfyjsjg_new(string pi_fwjgh, string PI_ZYH, string pi_xzqh,
-            out string PO_TCZF,    out string po_bczf, out string po_zxjj,    out string pO_GWYBT,
-            out string PO_GWYBZ,   out string po_qtzf, out string PO_ZHZF,    out string PO_XJZF,
-            out string PO_QFJE,    out string PO_JSRQ,out string po_bz,   out string PO_FHZ,
-            out string PO_MSG);
+          StringBuilder PO_TCZF,  StringBuilder po_bczf,StringBuilder po_zxjj,  StringBuilder pO_GWYBT,
+          StringBuilder PO_GWYBZ, StringBuilder po_qtzf,StringBuilder PO_ZHZF,  StringBuilder PO_XJZF,
+          StringBuilder PO_QFJE,  StringBuilder PO_JSRQ,StringBuilder po_bz, StringBuilder PO_FHZ,
+          StringBuilder PO_MSG);
         /// <summary>
         /// 处方项目传输
         /// </summary>
@@ -240,9 +240,9 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "xmlcfmxcs")]
+        [DllImport("yyjk.dll", EntryPoint = "xmlcfmxcs", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int xmlcfmxcs(string pi_jzjlh, string  pi_xzqh,
-             out string po_pch,out string po_fhz,out string po_msg);
+           StringBuilder po_pch,StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 费用批次未注册确认信息查询
         /// </summary>
@@ -252,9 +252,9 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "fypcxxcx")]
+        [DllImport("yyjk.dll", EntryPoint = "fypcxxcx", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int fypcxxcx(string pi_jzjlh, string pi_xzqh,
-            out string po_pch, out string po_fhz, out string po_msg);
+          StringBuilder po_pch,StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 费用批次未注册确认信息查询
         /// </summary>
@@ -266,9 +266,9 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "fypcxxqr")]
+        [DllImport("yyjk.dll", EntryPoint = "fypcxxqr", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int fypcxxqr(string Pi_jzjlh, string Pi_xzqh, string Pi_pch, string Pi_qrlx, string Pi_jbr,
-            out string po_fhz, out string po_msg);
+          StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 已经上传处方明细删除
         /// </summary>
@@ -278,9 +278,9 @@ namespace BenDing.Service
         /// <param name="po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="po_msg">系统错误信息</param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "cfmxplsc")]
+        [DllImport("yyjk.dll", EntryPoint = "cfmxplsc", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int cfmxplsc(string pi_jzjlh, string  pi_pch, string  pi_xzqh,
-            out string po_fhz,out string po_msg) ;
+          StringBuilder po_fhz,StringBuilder po_msg) ;
         /// <summary>
         /// 
         /// </summary>
@@ -289,9 +289,9 @@ namespace BenDing.Service
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "xmlycscfmxcx")]
+        [DllImport("yyjk.dll", EntryPoint = "xmlycscfmxcx", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int xmlycscfmxcx(string pi_jzjlh, string pi_xzqh,
-        out string po_fhz,out string po_msg);
+      StringBuilder po_fhz,StringBuilder po_msg);
         /// <summary>
         /// 14.项目字典下载
         /// </summary>
@@ -299,9 +299,9 @@ namespace BenDing.Service
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "xmzdxz")]
+        [DllImport("yyjk.dll", EntryPoint = "xmzdxz", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int xmzdxz(string pi_xmlb,
-            out string po_fhz,out string po_msg) ;
+          StringBuilder po_fhz,StringBuilder po_msg) ;
         /// <summary>
         /// 18.读持卡人基本信息
         /// </summary>
@@ -319,13 +319,13 @@ namespace BenDing.Service
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "ReadCardInfo")]
+        [DllImport("yyjk.dll", EntryPoint = "ReadCardInfo", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int ReadCardInfo(
             int pi_ReaderPort, string pi_CardPasswd,
-            out string po_dwmc,out string po_Cardid,out string po_Sfzhm,
-            out string po_Name,out string po_Sex,out string po_Folk,
-            out string po_BirthPlace,out string po_BirthDate,out string po_Acntbalance,
-            out string po_fhz,out string po_msg
+          StringBuilder po_dwmc,StringBuilder po_Cardid,StringBuilder po_Sfzhm,
+          StringBuilder po_Name,StringBuilder po_Sex,StringBuilder po_Folk,
+          StringBuilder po_BirthPlace,StringBuilder po_BirthDate,StringBuilder po_Acntbalance,
+          StringBuilder po_fhz,StringBuilder po_msg
             );
         /// <summary>
         /// 19.IC卡：IC卡划卡操作
@@ -341,12 +341,12 @@ namespace BenDing.Service
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "hkgl")]
+        [DllImport("yyjk.dll", EntryPoint = "hkgl", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int hkgl(
             int pi_ReaderPort, string pi_CardPasswd,string pi_fyze,
             string pi_hklb,string Pi_yybh,string pi_jbr,
-            out string Po_hklsh,out string po_zhzfje,out string po_zfzfje,
-            out string po_fhz,out string po_msg
+          StringBuilder Po_hklsh,StringBuilder po_zhzfje,StringBuilder po_zfzfje,
+          StringBuilder po_fhz,StringBuilder po_msg
             );
         /// <summary>
         /// 已医疗机构结算信息查询
@@ -357,9 +357,9 @@ namespace BenDing.Service
         /// <param name="po_fhz"></param>
         /// <param name="po_msg"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "xmljsxxcx")]
+        [DllImport("yyjk.dll", EntryPoint = "xmljsxxcx", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int xmljsxxcx(string pi_jsksrq, string  pi_jszzrq, string  pi_xzqh,
-            out string po_fhz, out string po_msg) ;
+          StringBuilder po_fhz,StringBuilder po_msg) ;
         #endregion
         #region 居民医保 
         /// <summary>
@@ -368,22 +368,21 @@ namespace BenDing.Service
         /// <param name="aLoginID"></param>
         /// <param name="aUserPwd"></param>
         /// <returns></returns>
-
-        [DllImport("yyjk.dll", EntryPoint = "ConnectAppServer_cxjb")]
-        public static extern int ConnectAppServer_cxjb(string aLoginID, string aUserPwd);
+        [DllImport("yyjk.dll", EntryPoint = "ConnectAppServer_cxjb" , CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        public static extern int ConnectAppServer_cxjb( String aLoginID, String aUserPwd);
 
         /// <summary>
         /// 断开服务器
         /// </summary>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "DisConnectAppServer_cxjb")]
+        [DllImport("yyjk.dll", EntryPoint = "DisConnectAppServer_cxjb", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int DisConnectAppServer_cxjb();
         /// <summary>
         /// 业务功能调用
         /// </summary>
         /// <param name="aFuncCode"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "CallService_cxjb")]
+        [DllImport("yyjk.dll", EntryPoint = "CallService_cxjb", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int CallService_cxjb(string aFuncCode);
         /// <summary>
         /// 读取社保卡
@@ -391,7 +390,7 @@ namespace BenDing.Service
         /// <param name="aReaderPort"></param>
         /// <param name="aCardPasswd"></param>
         /// <returns></returns>
-        [DllImport("yyjk.dll", EntryPoint = "ReadCardInfo_cxjb")]
+        [DllImport("yyjk.dll", EntryPoint = "ReadCardInfo_cxjb", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern int ReadCardInfo_cxjb(string aReaderPort, string aCardPasswd);
         #endregion
 
