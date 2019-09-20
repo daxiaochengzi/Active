@@ -20,7 +20,7 @@ namespace BenDingActive.Service
 {
     public class ResidentMedicalInsuranceTest
     {
-        private ResidentMedicalInsuranceService Resident = new ResidentMedicalInsuranceService();
+        private ResidentMedicalInsuranceService _resident = new ResidentMedicalInsuranceService();
         //public ApiJsonResultData GetUserInfo()
         //{
         //    var resultData = new ApiJsonResultData();
@@ -193,7 +193,7 @@ namespace BenDingActive.Service
         //                            new ApiJsonResultData());
 
         //                        //1.2.4医保信息回写至基层系统CXJB002
-                               
+
         //                        var DataAllBasiclevelParam = new SaveXmlDataServiceParam()
         //                        {
         //                            YbOrgCode = baseParam.YbOrgCode,
@@ -258,7 +258,7 @@ namespace BenDingActive.Service
 
         //        var RegisterParam = new HospitalizationModifyParam()
         //        {
-                   
+
         //            PI_TES = param.PI_TES,
         //            PI_HKXZ = param.PI_HKXZ,
         //            PI_RYRQ = Convert.ToDateTime(result.入院日期).ToString("yyyyMMdd"),
@@ -300,7 +300,7 @@ namespace BenDingActive.Service
         //        }
         //        else
         //        {
-                   
+
         //            Logs.LogWrite(new LogParam()
         //            {
         //                Msg = RegisterData.PO_MSG,
@@ -316,14 +316,14 @@ namespace BenDingActive.Service
         //    {
         //        resultData.Success = false;
         //        resultData.Message = e.Message;
-                
+
         //    }
 
         //    return resultData;
 
 
         //}
-    
+
         ///// <summary>
         ///// 处方上传
         ///// </summary>
@@ -363,5 +363,40 @@ namespace BenDingActive.Service
         //{
 
         //}
+
+
+
+        public UserInfoDto GetUserInfo()
+        {
+            //登录账户:cpg2677
+            //居民保险
+            //YbOrgCode = 99999
+            //OrgID = 51072600000000000000000513435964
+            //EmpID = E075AC49FCE443778F897CF839F3B924
+            //BID = FFE6ADE4D0B746C58B972C7824B8C9DF &
+            //      BsCode = 21
+            //TransKey = FFE6ADE4D0B746C58B972C7824B8C9DF
+            //伊珍敏
+            //512501195802085180
+            string baseParam = JsonConvert.SerializeObject(new HisBaseParam()
+            {
+                YbOrgCode = "99999",
+                EmpID = "E075AC49FCE443778F897CF839F3B924",
+                OrgID = "51072600000000000000000513435964",
+                BID = "FFE6ADE4D0B746C58B972C7824B8C9DF",
+                BsCode = "21",
+                TransKey = "FFE6ADE4D0B746C58B972C7824B8C9DF"
+            });
+            //var paramEntity = new UserInfoParam();
+            //paramEntity.PI_CRBZ = "1";
+            //paramEntity.PI_SFBZ = "512527196604306139";
+
+            var paramEntity = new UserInfoParam();
+            paramEntity.PI_CRBZ = "2";
+            paramEntity.PI_SFBZ = "1000039551";
+
+            var dataResult = _resident.GetUserInfo(JsonConvert.SerializeObject(paramEntity), JsonConvert.DeserializeObject<HisBaseParam>(baseParam));
+            return dataResult;
+        }
     }
 }

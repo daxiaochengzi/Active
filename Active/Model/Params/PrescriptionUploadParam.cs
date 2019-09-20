@@ -12,7 +12,7 @@ namespace BenDingActive.Model.Params
     {/// <summary>
      /// 住院号
      /// </summary>
-        public string PI_ZHY { get; set; }
+        public string PI_ZYH { get; set; }
         /// <summary>
         /// 经办人
         /// </summary>
@@ -61,6 +61,7 @@ namespace BenDingActive.Model.Params
         /// 收费项目名称
         /// </summary>
         public string AKC223 { get; set; }
+       
         /// <summary>
         /// 收费项目等级
         /// </summary>
@@ -76,7 +77,7 @@ namespace BenDingActive.Model.Params
         /// <summary>
         /// 金额
         /// </summary>
-        public string PI_AKC227 { get; set; }
+        public string AKC227 { get; set; }
         /// <summary>
         /// 自付金额
         /// </summary>

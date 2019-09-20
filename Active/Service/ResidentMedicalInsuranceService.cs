@@ -12,19 +12,19 @@ namespace BenDingActive.Service
  /// </summary>
     public class ResidentMedicalInsuranceService
     {
+      
         /// <summary>
         /// 获取个人基础资料
         /// </summary>
         /// <param name="param"></param>
         /// <param name="baseParam"></param>
-        public string GetUserInfo(string param, HisBaseParam baseParam)
+        public UserInfoDto GetUserInfo(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData {Success = true};
             var data=new UserInfoDto();
             try
             {
                var paramIni= JsonConvert.DeserializeObject<UserInfoParam>(param);  
-
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
@@ -61,7 +61,8 @@ namespace BenDingActive.Service
                 });
 
             }
-            return JsonConvert.SerializeObject(resultData);
+
+            return data; //JsonConvert.SerializeObject(resultData);
 
         }
         /// <summary>
@@ -169,7 +170,7 @@ namespace BenDingActive.Service
         /// 处方上传
         /// </summary>
         /// <returns></returns>
-        public string PrescriptionUpload(string param, HisBaseParam baseParam)
+        public PrescriptionUploadDto PrescriptionUpload(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
             var data = new PrescriptionUploadDto();
@@ -213,8 +214,10 @@ namespace BenDingActive.Service
                 });
 
             }
-            return JsonConvert.SerializeObject(resultData);
-          
+
+            return data; //JsonConvert.SerializeObject(resultData);
+
+
         }
         /// <summary>
         /// 处方删除
@@ -279,7 +282,7 @@ namespace BenDingActive.Service
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = WorkersMedicalInsurance.CallService_cxjb("CXJB005");
+                    int result = WorkersMedicalInsurance.CallService_cxjb("CXJB006");
                     if (result == 1)
                     {
                          var validData = XmlHelp.ValidXml("CFMX");
@@ -331,7 +334,6 @@ namespace BenDingActive.Service
             try
             {
                 var paramIni = JsonConvert.DeserializeObject<BatchConfirmationParam>(param);
-
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
@@ -545,7 +547,6 @@ namespace BenDingActive.Service
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
 
-
                     }
 
                 }
@@ -619,7 +620,7 @@ namespace BenDingActive.Service
         /// <summary>
         /// 项目下载
         /// </summary>
-        public string ProjectDownload(string param, HisBaseParam baseParam)
+        public ProjectDownloadDto ProjectDownload(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
             var data = new ProjectDownloadDto();
@@ -630,7 +631,7 @@ namespace BenDingActive.Service
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = WorkersMedicalInsurance.CallService_cxjb("CXJB013");
+                    int result = WorkersMedicalInsurance.CallService_cxjb("CXJB019");
                     if (result == 1)
                     {
                         data = XmlHelp.DeSerializerModel(new ProjectDownloadDto());
@@ -663,7 +664,8 @@ namespace BenDingActive.Service
                 });
 
             }
-            return JsonConvert.SerializeObject(resultData);
+
+            return data; //JsonConvert.SerializeObject(resultData);
         }
         /// <summary>
         /// 特殊疾病认定
@@ -1168,7 +1170,7 @@ namespace BenDingActive.Service
         /// <summary>
         /// 特殊疾病报销汇总取消
         /// </summary>
-        public string IdentificationSpecialReimbursementAlllCancel(string param, HisBaseParam baseParam)
+        public string IdentificationSpecialReimbursementAllCancel(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
             var data = new IdentificationSpecialReimbursementAlllCancelDto();

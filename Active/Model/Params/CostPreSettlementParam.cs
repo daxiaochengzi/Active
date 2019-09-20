@@ -13,7 +13,7 @@ namespace BenDingActive.Model.Params
         /// <summary>
         /// 住院号
         /// </summary>
-        public string PI_ZHY { get; set; }
+        public string PI_ZYH { get; set; }
         /// <summary>
         /// 出院日期
         /// </summary>

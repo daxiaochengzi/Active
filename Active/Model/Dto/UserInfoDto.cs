@@ -30,7 +30,7 @@ namespace BenDingActive.Model.Dto
         /// </summary>
         public string PO_CSNY { get; set; }
         /// <summary>
-        /// 险种类型
+        /// 险种类型310:城镇职工基本医疗保险342：城乡居民基本医疗保险根据获取的险种类型，调用对应的职工或者居民接口办理入院。
         /// </summary>
         public string PO_XZLX { get; set; }
         /// <summary>

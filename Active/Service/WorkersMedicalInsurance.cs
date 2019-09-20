@@ -12,7 +12,7 @@ namespace BenDing.Service
     public static class WorkersMedicalInsurance
     {
         #region 职工医保 
-
+      
         /// <summary>
         /// 获取个人基本资料
         /// </summary>
@@ -36,7 +36,7 @@ namespace BenDing.Service
         /// <param name="Po_fhz">过程返回值(为1时正常，否则不正常)</param>
         /// <param name="Po_msg">系统错误信息</param>
         [DllImport("yyjk.dll", EntryPoint = "hqgrjbzl", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        public static extern int ChangeNumber(string pi_sfbz, string pi_crbz, string pi_xzqh,
+        public static extern int hqgrjbzl(string pi_sfbz, string pi_crbz, string pi_xzqh,
        StringBuilder po_grshbzh,StringBuilder po_xm,StringBuilder po_xb,StringBuilder po_csny,
        StringBuilder po_zglb,StringBuilder po_lxdz,StringBuilder po_lxdh,StringBuilder po_sfzh,
        StringBuilder po_sznl,StringBuilder po_dwmc,StringBuilder Po_cbzt,StringBuilder po_grzhye,

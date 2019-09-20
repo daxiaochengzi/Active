@@ -10,7 +10,7 @@ namespace BenDingActive.Model.Params
     {/// <summary>
         /// 住院号
         /// </summary>
-        public string PI_ZHY { get; set; }
+        public string PI_ZYH { get; set; }
         /// <summary>
         /// 操作员
         /// </summary>
@@ -20,7 +20,7 @@ namespace BenDingActive.Model.Params
         /// </summary>
         public string PI_CYRQ { get; set; }
         /// <summary>
-        /// 出院情况
+        ///  出院情况（1康复，2转院，3死亡，4其他）
         /// </summary>
         public string PI_CYQK { get; set; }
         ///<summary>

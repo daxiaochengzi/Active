@@ -70,6 +70,10 @@ namespace BenDingActive.Model.Params
         /// </summary>
         public string PI_AKB021_3 { get; set; }
         /// <summary>
+        /// 特殊疾病编号
+        /// </summary>
+        public string PI_CKZ735 { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public List<IdentificationSpecialDiseasesRowParam> PI_DYXX { get; set; }

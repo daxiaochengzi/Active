@@ -166,6 +166,7 @@
     <Compile Include="Model\Params\Single\SinglePreSettlementQueryParam.cs" />
     <Compile Include="Model\Params\UserInfoParam.cs" />
     <Compile Include="Model\Params\Web\HospitalizationModifyWebParam.cs" />
+    <Compile Include="Model\Params\Web\MedicalInsuranceDataAllWebParam.cs" />
     <Compile Include="Model\Params\Web\PrescriptionUploadWebParam.cs" />
     <Compile Include="Model\Params\Workers\BatchConfirmationWorkersParam.cs" />
     <Compile Include="Model\Params\Workers\BatchUnConfirmationWorkersParam.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Model\Params\Workers\HospitalizationRegisterWorkersParam.cs" />
     <Compile Include="Model\Params\Workers\PrescriptionDeleteWorkersParam.cs" />
     <Compile Include="Model\Params\Workers\PrescriptionDetailQueryWorkersParam.cs" />
+    <Compile Include="Model\Params\Workers\PrescriptionUploadWorkersDetailParam.cs" />
     <Compile Include="Model\Params\Workers\PrescriptionUploadWorkersParam.cs" />
     <Compile Include="Model\Params\Workers\ProjectDownloadWorkersParam.cs" />
     <Compile Include="Model\Params\Workers\UserInfoIndustrialInjuryWorkersParam.cs" />

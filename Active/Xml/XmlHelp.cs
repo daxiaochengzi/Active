@@ -10,6 +10,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using BenDingActive.Model;
 using BenDingActive.Model.Dto;
+using BenDingActive.Model.Params.Workers;
 using Newtonsoft.Json;
 
 namespace BenDingActive.Xml
@@ -65,6 +66,50 @@ namespace BenDingActive.Xml
             return tStr;
           
         }
+        public static string ToUnXml<T>(T t)
+        {
+            string tStr = string.Empty;
+            if (t == null)
+            {
+                return tStr;
+            }
+            tStr = "";
+            System.Reflection.PropertyInfo[] properties = t.GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            if (properties.Length <= 0)
+            {
+                return tStr;
+            }
+            foreach (System.Reflection.PropertyInfo item in properties)
+            {
+                string name = item.Name;
+                dynamic value = item.GetValue(t, null);
+                string str = null;
+                if (value == null)
+                {
+                    str += "<" + name + ">" + "</" + name + ">";
+                }
+                else
+                {
+                    var datatype = value.GetType();
+                    if (datatype.Name == "String")
+                    {
+                        str += "<" + name + ">" + value.ToString() + "</" + name + ">";
+                    }
+                    else
+                    {
+                        str += "<" + name + ">";
+                        var rowstr = XmlUnRows(value);
+                        if (!string.IsNullOrWhiteSpace(rowstr))
+                            str += rowstr;
+                        str += "</" + name + ">";
+
+                    }
+                }
+                tStr += str.ToUpper();
+            }
+            return tStr;
+
+        }
         public static bool SaveXml<T>(T t)
         {
             var strXml = ToXml(t);
@@ -75,7 +120,6 @@ namespace BenDingActive.Xml
             }
             else
             {
-
                 //创建XmlDocument对象
                 XmlDocument xmlDoc = new XmlDocument();
                 //XML的声明<?xml version="1.0" encoding="gb2312"?> 
@@ -102,6 +146,45 @@ namespace BenDingActive.Xml
                 return result;
             }
         }
+
+        public static bool SavePrescriptionUploadWorkersParam(PrescriptionUploadWorkersDetailListParam t,string num)
+        {
+            var strXml = ToUnXml(t);
+            bool result = false;
+            if (string.IsNullOrWhiteSpace(strXml))
+            {
+                return result;
+            }
+            else
+            {
+                //创建XmlDocument对象
+                XmlDocument xmlDoc = new XmlDocument();
+                //XML的声明<?xml version="1.0" encoding="gb2312"?> 
+                XmlDeclaration xmlSM = xmlDoc.CreateXmlDeclaration("1.0", "GBK", null);
+                //追加xmldecl位置
+                xmlDoc.AppendChild(xmlSM);
+                //添加一个名为Gen的根节点
+                XmlElement xml = xmlDoc.CreateElement("", "ROWDATA", "");
+                xml.InnerXml = strXml;
+                xmlDoc.AppendChild(xml);
+
+                string pathXml = System.AppDomain.CurrentDomain.BaseDirectory + "cfcs\\cfmx"+ num + ".xml";
+                if (File.Exists(pathXml))
+                {
+                    File.Delete(pathXml);
+                    xmlDoc.Save(pathXml);
+                    result = true;
+                }
+                else
+                {
+                    xmlDoc.Save(pathXml);
+                    result = true;
+                }
+
+                return result;
+            }
+        }
+
         public static T DeSerializer<T>(string strXml) where T : class
         {
             try
@@ -127,7 +210,7 @@ namespace BenDingActive.Xml
         public static T DeSerializerModel<T>( T t)
         {
             var result = t;
-            string pathXml = System.AppDomain.CurrentDomain.BaseDirectory + "RequestParams.xml";
+            string pathXml = System.AppDomain.CurrentDomain.BaseDirectory + "ResponseParams.xml";
             XmlDocument doc = new XmlDocument();
             doc.Load(pathXml);
             string jsonText = JsonConvert.SerializeXmlNode(doc);
@@ -196,6 +279,49 @@ namespace BenDingActive.Xml
             }
             return str;
         }
+        public static string XmlUnRows(dynamic rowsObject)
+        {
+            string str = null;
+            var count = rowsObject.Count;
+            //判断当前行是否存在
+            if (Convert.ToInt32(count) > 0)
+            {
+                foreach (var entityItem in rowsObject)
+                {
+                    string rowsStr = "<Row>";
+                    System.Reflection.PropertyInfo[] rows = entityItem.GetType()
+                        .GetProperties(System.Reflection.BindingFlags.Instance |
+                                       System.Reflection.BindingFlags.Public);
+
+                    foreach (System.Reflection.PropertyInfo itemRows in rows)
+                    {
+                        string rowName = itemRows.Name;
+                        dynamic rowValue = itemRows.GetValue(entityItem, null);
+
+                        if (rowValue == null)
+                        {
+                            rowsStr += "<" + rowName + ">" + "</" + rowName + ">";
+                        }
+                        else
+                        {
+                            rowsStr += "<" + rowName + ">" + rowValue.ToString() + "</" + rowName + ">";
+                        }
+
+
+
+                    }
+                    rowsStr += "</Row>";
+                    str += rowsStr;
+                }
+
+
+            }
+
+            string news = str.Substring(5, str.Length - 5);
+            news = news.Substring(0, news.Length - 6);
+            return news;
+        }
+
         /// <summary>
         /// 验证xml返回结果是否正确
         /// </summary>

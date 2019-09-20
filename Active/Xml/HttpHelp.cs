@@ -18,7 +18,7 @@ namespace BenDingActive.Xml
             string result = null;
 
             var resultEntiy = t;
-            string serviceAddress = "http://192.168.101.100:50839/Test/"+ methodName + "";
+            string serviceAddress = "http://127.0.0.1:50839/Test/" + methodName + "";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(serviceAddress);
 
             request.Method = "POST";

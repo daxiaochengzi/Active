@@ -8,6 +8,6 @@ namespace BenDingActive.Model.Params
 {
   public  class BatchUnConfirmationParam
     {
-        public string PI_ZHY { get; set; }
+        public string PI_ZYH { get; set; }
     }
 }
