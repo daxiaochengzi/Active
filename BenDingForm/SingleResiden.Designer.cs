@@ -45,6 +45,9 @@
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -214,11 +217,40 @@
             this.button19.Text = "门诊诊查汇总取消";
             this.button19.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 195);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(787, 156);
+            this.textBox1.TabIndex = 36;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(269, 21);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 37;
+            this.button11.Text = "获取基本资料";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(350, 23);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(188, 21);
+            this.textBox2.TabIndex = 38;
+            this.textBox2.Text = "512527195210045023";
+            // 
             // SingleResiden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
@@ -239,6 +271,7 @@
             this.Name = "SingleResiden";
             this.Text = "单病种";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,5 +294,8 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

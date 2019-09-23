@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BenDingActive.Model;
+using BenDingActive.Model.Params;
 using BenDingActive.Model.Params.Single;
 using Newtonsoft.Json;
 
@@ -19,7 +20,8 @@ namespace BenDingForm
     {/// <summary> 
     /// 单病种
     /// </summary>
-        SingleResidentMedicalInsuranceService _single=new SingleResidentMedicalInsuranceService(); 
+        SingleResidentMedicalInsuranceService _single=new SingleResidentMedicalInsuranceService();
+        ResidentMedicalInsuranceService _resident = new ResidentMedicalInsuranceService();
         public SingleResiden()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace BenDingForm
             var param = JsonConvert.SerializeObject(new SingleHospitalizationRegisterParam()
             {
                 //J15.700 支原体肺炎
-                PI_SFBZ = "513701199002124815",//1为身份证
+                PI_SFBZ = textBox2.Text,//1为身份证
                 PI_CRBZ="1",
                 PI_AKA130="18",
                 PI_CKC537="20190923",
@@ -44,8 +46,8 @@ namespace BenDingForm
                 PI_AAE011= "李茜"
 
             });
-            _single.SingleHospitalizationRegister(param, new HisBaseParam());
-
+      
+            textBox1.Text = _single.SingleHospitalizationRegister(param, new HisBaseParam());
 
         }
 
@@ -66,7 +68,7 @@ namespace BenDingForm
       
 
             });
-            _single.SingleHospitalizationModify(param, new HisBaseParam());
+            textBox1.Text = _single.SingleHospitalizationModify(param, new HisBaseParam());
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -80,7 +82,7 @@ namespace BenDingForm
 
 
             });
-            _single.SingleHospitalizationCancel(param, new HisBaseParam());
+            textBox1.Text = _single.SingleHospitalizationCancel(param, new HisBaseParam());
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -148,7 +150,7 @@ namespace BenDingForm
                 PI_JBR= "李茜",
                 PI_CFMX = paramList
             });
-            _single.SinglePrescriptionUpload(param, new HisBaseParam());
+            textBox1.Text = _single.SinglePrescriptionUpload(param, new HisBaseParam());
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -159,7 +161,7 @@ namespace BenDingForm
 
                 PI_AAZ217 = "",//必填
             });
-            _single.SinglePrescriptionDetailQuery(param, new HisBaseParam());
+            textBox1.Text = _single.SinglePrescriptionDetailQuery(param, new HisBaseParam());
         }
 
 
@@ -173,7 +175,7 @@ namespace BenDingForm
                 PI_AAZ217 = "",//必填
                 PI_PCH="",//必填
             });
-            _single.SinglePrescriptionDelete(param, new HisBaseParam());
+            textBox1.Text = _single.SinglePrescriptionDelete(param, new HisBaseParam());
             
         }
 
@@ -186,7 +188,7 @@ namespace BenDingForm
                 PI_AAZ217 = "",//必填
                 PI_CYRQ = "2019-09-23 13:01:01",//必填
             });
-            _single.SinglePreSettlement(param, new HisBaseParam());
+            textBox1.Text = _single.SinglePreSettlement(param, new HisBaseParam());
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -204,7 +206,7 @@ namespace BenDingForm
 
 
             });
-            _single.SingleLeaveHospitalSettlement(param, new HisBaseParam());
+            textBox1.Text = _single.SingleLeaveHospitalSettlement(param, new HisBaseParam());
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -219,7 +221,7 @@ namespace BenDingForm
 
 
             });
-            _single.SingleLeaveHospitalSettlementCancel(param, new HisBaseParam());
+            textBox1.Text = _single.SingleLeaveHospitalSettlementCancel(param, new HisBaseParam());
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -234,7 +236,7 @@ namespace BenDingForm
                 PI_JSRQ = "",//必填
 
             });
-            _single.SingleMonthSettlement(param, new HisBaseParam());
+            textBox1.Text = _single.SingleMonthSettlement(param, new HisBaseParam());
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -248,7 +250,7 @@ namespace BenDingForm
 
 
             });
-            _single.SingleMonthSettlementCancel(param, new HisBaseParam());
+            textBox1.Text = _single.SingleMonthSettlementCancel(param, new HisBaseParam());
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -262,7 +264,7 @@ namespace BenDingForm
 
 
             });
-            _single.OutpatientConsultationFeeSettlement(param, new HisBaseParam());
+            textBox1.Text = _single.OutpatientConsultationFeeSettlement(param, new HisBaseParam());
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -272,7 +274,7 @@ namespace BenDingForm
             {
                 PI_BAE007 = "",//必填
             });
-            _single.OutpatientConsultationFeeCancel(param, new HisBaseParam());
+            textBox1.Text = _single.OutpatientConsultationFeeCancel(param, new HisBaseParam());
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -283,7 +285,24 @@ namespace BenDingForm
                 PI_AAC001 = "",//必填
                 PI_BAE007 = "",//必填
             });
-            _single.OutpatientConsultationFeeQuery(param, new HisBaseParam());
+            textBox1.Text = _single.OutpatientConsultationFeeQuery(param, new HisBaseParam());
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            BaseConnect.Connect();
+            var paramEntity = new UserInfoParam();
+            paramEntity.PI_CRBZ = "1";
+            paramEntity.PI_SFBZ = textBox2.Text;
+
+            var dataResult = _resident.GetUserInfo(JsonConvert.SerializeObject(paramEntity), new HisBaseParam());
+            textBox1.Text = JsonConvert.SerializeObject(dataResult);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Form1 f2 = new Form1();
+            f2.Show();
         }
     }
 }
