@@ -16,6 +16,6 @@ namespace BenDingActive.Model.Params.Single
         /// <summary>
         /// 业务流水号  
         /// </summary>
-        public string PO_BAE007 { get; set; }
+        public string PI_BAE007 { get; set; }
     }
 }

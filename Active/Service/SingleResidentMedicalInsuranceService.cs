@@ -12,53 +12,7 @@ namespace BenDingActive.Service
 {//WorkersMedicalInsurance
     public class SingleResidentMedicalInsuranceService
     {
-        public string SingleGetUserInfo(string param, HisBaseParam baseParam)
-        {
-            var resultData = new ApiJsonResultData { Success = true };
-            var data = new UserInfoDto();
-            try
-            {
-                var paramIni = JsonConvert.DeserializeObject<UserInfoParam>(param);
-
-                var xmlStr = XmlHelp.SaveXml(paramIni);
-                if (xmlStr)
-                {
-                    int result = WorkersMedicalInsurance.CallService_cxjb("CXJB001");
-                    if (result == 1)
-                    {
-                        data = XmlHelp.DeSerializerModel(new UserInfoDto());
-                        if (data.PO_FHZ == "1")
-                        {
-                            resultData.Data = JsonConvert.SerializeObject(data);
-                        }
-                        else
-                        {
-                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
-                        }
-
-
-                    }
-
-                }
-
-            }
-            catch (Exception e)
-            {
-                resultData.Success = false;
-                resultData.Message = e.Message;
-                Logs.LogWrite(new LogParam()
-                {
-                    Msg = e.Message,
-                    OperatorCode = baseParam.EmpID,
-                    Params = Logs.ToJson(param),
-                    ResultData = Logs.ToJson(data)
-
-                });
-
-            }
-            return JsonConvert.SerializeObject(resultData);
-
-        }
+        
         /// <summary>
         /// 入院登记
         /// </summary>
@@ -86,7 +40,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
 
                     }
 
@@ -137,7 +98,14 @@ namespace BenDingActive.Service
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
 
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
                     }
 
                 }
@@ -186,7 +154,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
 
                     }
 
@@ -236,7 +211,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
 
                     }
 
@@ -286,7 +268,14 @@ namespace BenDingActive.Service
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
 
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
                     }
 
                 }
@@ -322,7 +311,7 @@ namespace BenDingActive.Service
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = WorkersMedicalInsurance.CallService_cxjb("TPYP008");
+                    int result = WorkersMedicalInsurance.CallService_cxjb("TPYP009");
                     if (result == 1)
                     {
                         var dataValid = XmlHelp.ValidXml("PI_CFMX");
@@ -333,23 +322,39 @@ namespace BenDingActive.Service
                                 var data = XmlHelp.DeSerializerModel(
                                     new PrescriptionDetailQueryRowList());
                                 resultData.Data = JsonConvert.SerializeObject(data);
+                                Logs.LogWrite(new LogParam()
+                                {
+                                   
+                                    OperatorCode = baseParam.EmpID,
+                                    Params = Logs.ToJson(param),
+                                    ResultData = Logs.ToJson(data)
+
+                                });
                             }
                             else
                             {
                                 var data = XmlHelp.DeSerializerModel(
                                     new SinglePrescriptionDetailQueryDto());
                                 resultData.Data = JsonConvert.SerializeObject(data);
-                            }
+                                Logs.LogWrite(new LogParam()
+                                {
 
+                                    OperatorCode = baseParam.EmpID,
+                                    Params = Logs.ToJson(param),
+                                    ResultData = Logs.ToJson(data)
+
+                                });
+                            }
                            
+
                         }
                         else
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + dataValid.PO_MSG);
                         }
 
-                        
 
+                       
 
                     }
 
@@ -399,7 +404,14 @@ namespace BenDingActive.Service
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
 
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
 
+                        });
                     }
 
                 }
@@ -430,7 +442,7 @@ namespace BenDingActive.Service
             var data = new SinglePreMonthSettlementCancelDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<SinglePreMonthSettlementCancelParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<SingleLeaveHospitalSettlementCancelParam>(param);
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
@@ -446,6 +458,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -492,6 +512,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -539,6 +567,14 @@ namespace BenDingActive.Service
                             throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
                         }
                     }
+                    Logs.LogWrite(new LogParam()
+                    {
+                        Msg = data.PO_MSG,
+                        OperatorCode = baseParam.EmpID,
+                        Params = Logs.ToJson(param),
+                        ResultData = Logs.ToJson(data)
+
+                    });
 
                 }
 
@@ -562,13 +598,13 @@ namespace BenDingActive.Service
         /// <summary>
         ///单病种 精神病住院月结汇总查询
         /// </summary>
-        public string SinglePreMonthSettlement(string param, HisBaseParam baseParam)
+        public string SingleMonthSettlement(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
             var data = new SinglePreMonthSettlementDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<SinglePreMonthSettlementParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<SingleMonthSettlementParam>(param);
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
@@ -584,6 +620,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception(data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -608,13 +652,13 @@ namespace BenDingActive.Service
         /// <summary>
         ///单病种 精神病月结汇总取消
         /// </summary>
-        public string SinglePreMonthSettlementCancel(string param, HisBaseParam baseParam)
+        public string SingleMonthSettlementCancel(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
             var data = new SinglePreMonthSettlementCancelDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<SinglePreMonthSettlementCancelParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<SingleMonthSettlementCancelParam>(param);
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
@@ -630,6 +674,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception(data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -676,6 +728,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception(data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -722,6 +782,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception(data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }
@@ -749,17 +817,17 @@ namespace BenDingActive.Service
         public string OutpatientConsultationFeeQuery(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new OutpatientConsultationFeeCancelDto();
+            var data = new OutpatientConsultationFeeQueryDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<OutpatientConsultationFeeCancelParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<OutpatientConsultationFeeQueryParam>(param);
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = WorkersMedicalInsurance.CallService_cxjb("TPYP302");
+                    int result = WorkersMedicalInsurance.CallService_cxjb("TPYP303");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new OutpatientConsultationFeeCancelDto());
+                        data = XmlHelp.DeSerializerModel(new OutpatientConsultationFeeQueryDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -768,6 +836,14 @@ namespace BenDingActive.Service
                         {
                             throw new Exception(data.PO_MSG);
                         }
+                        Logs.LogWrite(new LogParam()
+                        {
+                            Msg = data.PO_MSG,
+                            OperatorCode = baseParam.EmpID,
+                            Params = Logs.ToJson(param),
+                            ResultData = Logs.ToJson(data)
+
+                        });
                     }
 
                 }

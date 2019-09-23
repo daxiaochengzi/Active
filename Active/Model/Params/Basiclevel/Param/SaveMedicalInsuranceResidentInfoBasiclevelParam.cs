@@ -33,10 +33,7 @@ namespace BenDingActive.Model.Params.Basiclevel.Param
         /// 业务id
         /// </summary>
         public string BusinessId { get; set; }
-        /// <summary>
-        /// 身份证
-     
-        public string IdCard { get; set; }
+       
         /// <summary>
         /// 组织机构
         /// </summary>

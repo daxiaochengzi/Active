@@ -475,6 +475,11 @@ namespace BenDingForm
             };
             _residentd.ProjectDownload(param, baseParam);
         }
+
+        private void button24_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

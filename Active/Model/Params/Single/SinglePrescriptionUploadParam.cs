@@ -106,7 +106,7 @@ namespace BenDingActive.Model.Params.Single
         /// </summary>
         public string AKA074 { get; set; }
         /// <summary>
-        /// 是否单病种住院除外内容
+        /// 是否单病种住院除外内容 10-否 11-是 精神病住院时传为空
         /// </summary>
         public string CKE619 { get; set; }
         /// <summary>

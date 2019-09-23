@@ -10,15 +10,15 @@ namespace BenDingActive.Model.Params.Single
  /// </summary>
     public class SingleHospitalizationRegisterParam
     {/// <summary>
-        /// 身份标志  
-        /// </summary>
+     /// 身份标志 个人编号或身份证号
+     /// </summary>
         public string PI_SFBZ { get; set; }
         /// <summary>
-        /// 传入标志  
+        /// 传入标志  1为公民身份号码 2为个人编号
         /// </summary>
         public string PI_CRBZ { get; set; }
         /// <summary>
-        /// 就诊类别  
+        /// 就诊类别 18-单病种住院报销;28-单病种危急重症住院报销(三甲医院居民医疗不降低报销比例);19-精神病住院报销
         /// </summary>
         public string PI_AKA130 { get; set; }
         /// <summary>

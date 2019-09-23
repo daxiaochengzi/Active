@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 namespace BenDingActive.Model.Params.Basiclevel
 {
    public class QueryInpatientInfoBasicParam: HisBaseParam
-    {/// <summary>
-     /// 身份证
-     /// </summary>
-        public string IdCard { get; set; }
+    {
         /// <summary>
         /// 机构编号
         /// </summary>

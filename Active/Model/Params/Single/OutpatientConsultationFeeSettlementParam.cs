@@ -14,7 +14,7 @@ namespace BenDingActive.Model.Params.Single
         /// </summary>
         public string PI_SFBZ { get; set; }
         /// <summary>
-        /// 传入标志  
+        /// 传入标志  1为公民身份号码 2为个人编号
         /// </summary>
         public string PI_CRBZ { get; set; }
         /// <summary>

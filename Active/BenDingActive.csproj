@@ -157,8 +157,8 @@
     <Compile Include="Model\Params\Single\SingleHospitalizationRegisterParam.cs" />
     <Compile Include="Model\Params\Single\SingleLeaveHospitalSettlementCancelParam.cs" />
     <Compile Include="Model\Params\Single\SingleLeaveHospitalSettlementParam.cs" />
-    <Compile Include="Model\Params\Single\SinglePreMonthSettlementCancelParam.cs" />
-    <Compile Include="Model\Params\Single\SinglePreMonthSettlementParam.cs" />
+    <Compile Include="Model\Params\Single\SingleMonthSettlementCancelParam.cs" />
+    <Compile Include="Model\Params\Single\SingleMonthSettlementParam.cs" />
     <Compile Include="Model\Params\Single\SinglePrescriptionDeleteParam.cs" />
     <Compile Include="Model\Params\Single\SinglePrescriptionDetailQueryParam.cs" />
     <Compile Include="Model\Params\Single\SinglePrescriptionUploadParam.cs" />
@@ -192,6 +192,7 @@
     <Compile Include="Service\WorkersMedicalInsurance.cs" />
     <Compile Include="Service\WorkersMedicalInsuranceService.cs" />
     <Compile Include="Xml\ApiJsonResultData.cs" />
+    <Compile Include="Xml\BaseConnect.cs" />
     <Compile Include="Xml\HttpHelp.cs" />
     <Compile Include="Xml\LogParam.cs" />
     <Compile Include="Xml\Logs.cs" />

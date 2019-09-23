@@ -52,6 +52,7 @@
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -282,7 +283,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(223, 16);
+            this.button9.Location = new System.Drawing.Point(197, 14);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 26;
@@ -290,11 +291,22 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click_1);
             // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(346, 37);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(75, 23);
+            this.button24.TabIndex = 27;
+            this.button24.Text = "取消入院";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 342);
+            this.Controls.Add(this.button24);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
@@ -352,6 +364,7 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button24;
     }
 }
 

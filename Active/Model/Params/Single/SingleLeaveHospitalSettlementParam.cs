@@ -23,7 +23,7 @@ namespace BenDingActive.Model.Params.Single
         /// </summary>
         public string PI_CYRQ { get; set; }
         /// <summary>
-        /// 出院情况  
+        /// 出院情况  	出院情况（1康复，2转院，3死亡，4其他）
         /// </summary>
         public string PI_CYQK { get; set; }
         /// <summary>

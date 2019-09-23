@@ -14,7 +14,7 @@ namespace BenDingActive.Model.Params.Single
         /// </summary>
         public string PI_AAZ217 { get; set; }
         /// <summary>
-        /// 出入院标志  
+        /// 出入院标志  1-在院 3- 取消入院
         /// </summary>
         public string PI_CKC544 { get; set; }
         /// <summary>
