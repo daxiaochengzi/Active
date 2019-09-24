@@ -61,6 +61,11 @@
     <Compile Include="Model\Dto\CostPreSettlementDto.cs" />
     <Compile Include="Model\Dto\CostSettlementDto.cs" />
     <Compile Include="Model\Dto\CostSettlementQueryDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\DifferentHospitalizationCancelDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\DifferentHospitalizationModifyDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\DifferentLeaveHospitalDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\HospitalizationRegisterDifferentDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\UserInfoDifferentDto.cs" />
     <Compile Include="Model\Dto\HospitalizationModifyDto.cs" />
     <Compile Include="Model\Dto\HospitalizationRegisterDto.cs" />
     <Compile Include="Model\Dto\HospitalizedSettlementCancelDto.cs" />
@@ -127,6 +132,12 @@
     <Compile Include="Model\Params\CostPreSettlementParam.cs" />
     <Compile Include="Model\Params\CostSettlementParam.cs" />
     <Compile Include="Model\Params\CostSettlementQueryParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\DifferentHospitalizationCancelParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\DifferentHospitalizationModifyParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\DifferentLeaveHospitalParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\DifferentLeaveHospitalReturnParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\HospitalizationRegisterDifferentParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\UserInfoDifferentParam.cs" />
     <Compile Include="Model\Params\ExecuteSpParam.cs" />
     <Compile Include="Model\Params\HospitalizationModifyParam.cs" />
     <Compile Include="Model\Params\HospitalizationRegisterParam.cs" />
@@ -186,6 +197,8 @@
     <Compile Include="Model\ResidentIni.cs" />
     <Compile Include="Model\ResultData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\MedicalInsuranceDifferentPlaces.cs" />
+    <Compile Include="Service\MedicalInsuranceDifferentPlacesService.cs" />
     <Compile Include="Service\ResidentMedicalInsuranceService.cs" />
     <Compile Include="Service\ResidentMedicalInsuranceTest.cs" />
     <Compile Include="Service\SingleResidentMedicalInsuranceService.cs" />

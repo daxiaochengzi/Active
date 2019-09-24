@@ -20,7 +20,7 @@ namespace BenDingActive.Model.Params.Single
         /// <summary>
         /// 门诊诊查费总费用  
         /// </summary>
-        public string PI_ZCFY { get; set; }
+        public double PI_ZCFY { get; set; }
         /// <summary>
         /// 经办人  
         /// </summary>

@@ -104,7 +104,6 @@ namespace BenDingForm
             var ddd = new StringBuilder(32);
             StringBuilder str = new StringBuilder(32);
             //var retval = TestEg.GetRates( str,"妈妈的");
-          
             var retvaldd = TestEg.GetRatesString(str, ddd.Append("wc"));
           
         }

@@ -33,13 +33,13 @@ namespace BenDingForm
             BaseConnect.Connect();
             var param = JsonConvert.SerializeObject(new SingleHospitalizationRegisterParam()
             {
-                //J15.700 支原体肺炎
+                // E11.900 Ⅱ糖尿病社区诊治管理
                 PI_SFBZ = textBox2.Text,//1为身份证
                 PI_CRBZ="1",
                 PI_AKA130="18",
                 PI_CKC537="20190923",
-                PI_AKC193= "J15.700",
-                PI_CKC540= "支原体肺炎",
+                PI_AKC193= "E11.900",
+                PI_CKC540= "Ⅱ糖尿病社区诊治管理",
                 PI_AKF001 ="内科",
                 PI_AKE020="20",
                 PI_AKC190 = Convert.ToDateTime(DateTime.Now).ToString("yyyyMMddHHmmss") + "510726",//20位 入院日期+组织机构后四位
@@ -257,12 +257,10 @@ namespace BenDingForm
         {
             BaseConnect.Connect();
             var param = JsonConvert.SerializeObject(new OutpatientConsultationFeeSettlementParam()
-            {   PI_SFBZ="",//必填
-                PI_CRBZ = "",//必填
+            {   PI_SFBZ= textBox2.Text,//必填
+                PI_CRBZ = "1",//必填
                 PI_JBR = "李茜",//必填
-                PI_ZCFY = "20" //必填
-
-
+                PI_ZCFY = 20.00 //必填
             });
             textBox1.Text = _single.OutpatientConsultationFeeSettlement(param, new HisBaseParam());
         }
@@ -300,6 +298,12 @@ namespace BenDingForm
         }
 
         private void button12_Click(object sender, EventArgs e)
+        {
+            Form1 f2 = new Form1();
+            f2.Show();
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
         {
             Form1 f2 = new Form1();
             f2.Show();

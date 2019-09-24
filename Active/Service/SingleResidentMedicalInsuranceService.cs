@@ -24,7 +24,6 @@ namespace BenDingActive.Service
             try
             {
                 var paramIni = JsonConvert.DeserializeObject<SingleHospitalizationRegisterParam>(param);
-
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
