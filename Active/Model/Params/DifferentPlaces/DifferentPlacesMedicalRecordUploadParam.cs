@@ -6,34 +6,28 @@ using System.Threading.Tasks;
 
 namespace BenDingActive.Model.Params.DifferentPlaces
 {
-   public class DifferentLeaveHospitalReturnParam
-    {
-        
+  public  class DifferentPlacesMedicalRecordUploadParam
+   {
         /// <summary>
-        /// 参保人统筹地区编码
+        /// 参保地统筹区编码
         /// </summary>
         public string baa008 { get; set; }
         /// <summary>
-        /// 就诊记录号
+        /// 就诊登记号
         /// </summary>
         public string aaz217 { get; set; }
         /// <summary>
-        /// 个人编号
-        /// </summary>
-        public string aac001 { get; set; }
-        /// <summary>
-        /// 身份证号
-        /// </summary>
-        public string aac002 { get; set; }
-        /// <summary>
-        /// 姓名
-        /// </summary>
-        public string aac003 { get; set; }
-        /// <summary>
-        /// 出院经办人
+        /// 经办人姓名
         /// </summary>
         public string bkc131 { get; set; }
-     
+        /// <summary>
+        /// 经办时间
+        /// </summary>
+        public string aae036 { get; set; }
+        /// <summary>
+        /// 带路径图片文件名
+        /// </summary>
+        public string filename { get; set; }
 
     }
 }

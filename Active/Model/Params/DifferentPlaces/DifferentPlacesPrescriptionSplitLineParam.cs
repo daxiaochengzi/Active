@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BenDingActive.Model.Params.DifferentPlaces
 {
-   public class DifferentLeaveHospitalReturnParam
+  public  class DifferentPlacesPrescriptionSplitLineParam
     {
-        
         /// <summary>
-        /// 参保人统筹地区编码
+        /// 参保人统筹区代码
         /// </summary>
+
         public string baa008 { get; set; }
         /// <summary>
         /// 就诊记录号
@@ -22,18 +22,21 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string aac001 { get; set; }
         /// <summary>
-        /// 身份证号
+        /// 处方号
         /// </summary>
-        public string aac002 { get; set; }
+        public string aae072 { get; set; }
         /// <summary>
-        /// 姓名
+        /// 收费开始时间
         /// </summary>
-        public string aac003 { get; set; }
+        public string aae030 { get; set; }
         /// <summary>
-        /// 出院经办人
+        /// 收费终止时间
         /// </summary>
-        public string bkc131 { get; set; }
-     
+        public string aae031 { get; set; }
+        /// <summary>
+        /// 序号
+        /// </summary>
+        public string bke019 { get; set; }
 
     }
 }

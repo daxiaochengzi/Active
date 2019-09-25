@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace BenDingActive.Model.Params.DifferentPlaces
 {
-   public class DifferentLeaveHospitalReturnParam
+   public class OutpatientSettlementCancelParam
     {
         
         /// <summary>
-        /// 参保人统筹地区编码
+        /// 参保地统筹区编号
         /// </summary>
         public string baa008 { get; set; }
         /// <summary>
-        /// 就诊记录号
+        /// 就诊登记号
         /// </summary>
         public string aaz217 { get; set; }
         /// <summary>
@@ -22,7 +22,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string aac001 { get; set; }
         /// <summary>
-        /// 身份证号
+        /// 身份证号码(社会保障号码)
         /// </summary>
         public string aac002 { get; set; }
         /// <summary>
@@ -30,10 +30,24 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string aac003 { get; set; }
         /// <summary>
-        /// 出院经办人
+        /// 人员医疗结算事件id(就诊结算id)
+        /// </summary>
+        public string aaz216 { get; set; }
+        /// <summary>
+        /// 经办人姓名
         /// </summary>
         public string bkc131 { get; set; }
-     
-
+        /// <summary>
+        /// 费用总额
+        /// </summary>
+        public string akc264 { get; set; }
+        /// <summary>
+        /// 医保统筹支付合计（不包含个人账户支付）
+        /// </summary>
+        public string akb068 { get; set; }
+        /// <summary>
+        /// 个人账户支付
+        /// </summary>
+        public string akb066 { get; set; }
     }
 }

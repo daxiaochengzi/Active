@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BenDingActive.Xml
 {
-    /// <summary>
-    /// http请求返回结果
-    /// </summary>
+  
     public class ApiJsonResultData
     {
-        /// </value>
+      
 
         public bool Success { get; set; }
 
@@ -28,10 +26,7 @@ namespace BenDingActive.Xml
 
         public string Code { get; set; }
 
-        public string RedirectUrl { get; set; }
-
-
-        public bool ReloadPage { get; set; }
+      
     }
 
 }

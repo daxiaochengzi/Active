@@ -46,6 +46,10 @@ namespace BenDingActive.Service
 
                     }
 
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
+                    }
+
                 }
 
             }
@@ -64,7 +68,7 @@ namespace BenDingActive.Service
 
             }
 
-            return  JsonConvert.SerializeObject(resultData);
+            return JsonConvert.SerializeObject(resultData);
 
         }
         /// <summary>
@@ -96,6 +100,9 @@ namespace BenDingActive.Service
                         }
 
 
+                    }
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
                     }
 
                 }
@@ -154,6 +161,9 @@ namespace BenDingActive.Service
                         });
 
                     }
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
+                    }
 
                 }
 
@@ -204,6 +214,9 @@ namespace BenDingActive.Service
 
 
                     }
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
+                    }
 
                 }
 
@@ -242,7 +255,7 @@ namespace BenDingActive.Service
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK005");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK006");
                     if (result == 1)
                     {
                         data = XmlHelp.DeSerializerModel(new DifferentLeaveHospitalDto());
@@ -257,6 +270,10 @@ namespace BenDingActive.Service
 
 
                     }
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
+                    }
+
 
                 }
 
@@ -278,7 +295,6 @@ namespace BenDingActive.Service
             return JsonConvert.SerializeObject(resultData);
 
         }
-
         /// <summary>
         /// 出院办理回退
         /// </summary>
@@ -288,18 +304,18 @@ namespace BenDingActive.Service
         public string DifferentLeaveHospitalReturn(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new DifferentLeaveHospitalDto();
+            var data = new DifferentLeaveHospitalReturnDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<DifferentLeaveHospitalParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentLeaveHospitalReturnParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK005");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK007");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new DifferentLeaveHospitalDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentLeaveHospitalReturnDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -311,6 +327,10 @@ namespace BenDingActive.Service
 
 
                     }
+                    {
+                        throw new Exception("请检查医保网络是否正常!!!");
+                    }
+
 
                 }
 
@@ -339,18 +359,18 @@ namespace BenDingActive.Service
         public string DifferentPlacesPrescriptionUpload(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new PrescriptionUploadDto();
+            var data = new DifferentPlacesPrescriptionUploadDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<PrescriptionUploadParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesPrescriptionUploadParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB004");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK008");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new PrescriptionUploadDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesPrescriptionUploadDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -391,7 +411,7 @@ namespace BenDingActive.Service
         public string DifferentPlacesPrescriptionDelete(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new PrescriptionDeleteDto();
+            var data = new DifferentPlacesPrescriptionDeleteDto();
             try
             {
                 var paramIni = JsonConvert.DeserializeObject<PrescriptionDeleteParam>(param);
@@ -399,10 +419,56 @@ namespace BenDingActive.Service
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB005");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK009");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new PrescriptionDeleteDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesPrescriptionDeleteDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+
+
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        public string DifferentPlacesPrescriptionSplitLine(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesPrescriptionSplitLineDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesPrescriptionSplitLineParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK010");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesPrescriptionSplitLineDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -448,7 +514,7 @@ namespace BenDingActive.Service
         //        var xmlStr = XmlHelp.SaveXml(paramIni);
         //        if (xmlStr)
         //        {
-        //            int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB006");
+        //            int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK010");
         //            if (result == 1)
         //            {
         //                var validData = XmlHelp.ValidXml("CFMX");
@@ -490,25 +556,24 @@ namespace BenDingActive.Service
         //    }
         //    return JsonConvert.SerializeObject(resultData);
         //}
-        
         /// <summary>
         /// 费用预结算
         /// </summary>
         public string DifferentPlacesCostPreSettlement(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new CostPreSettlementDto();
+            var data = new DifferentPlacesCostPreSettlementDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<CostPreSettlementParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesCostPreSettlementParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB009");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK013");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new CostPreSettlementDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesCostPreSettlementDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -546,18 +611,18 @@ namespace BenDingActive.Service
         public string DifferentPlacesCostSettlement(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new CostSettlementDto();
+            var data = new DifferentPlacesCostSettlementDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<CostSettlementParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesCostSettlementParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB010");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK011");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new CostSettlementDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesCostSettlementDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -595,18 +660,18 @@ namespace BenDingActive.Service
         public string DifferentPlacesHospitalizedSettlementCancel(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new HospitalizedSettlementCancelDto();
+            var data = new DifferentPlacesHospitalizedSettlementCancelDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<HospitalizedSettlementCancelParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesHospitalizedSettlementCancelParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
                 {
-                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("CXJB011");
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK012");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new HospitalizedSettlementCancelDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesHospitalizedSettlementCancelDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);
@@ -686,5 +751,908 @@ namespace BenDingActive.Service
             }
             return JsonConvert.SerializeObject(resultData);
         }
+        /// <summary>
+        /// 异地划卡管理
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesCardManagement(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesCardManagementDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesCardManagementParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK014");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesCardManagementDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+
+
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 医嘱上传
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesDoctorsAdviceUpload(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesDoctorsAdviceUploadDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesDoctorsAdviceUploadParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK016");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesDoctorsAdviceUploadDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 医嘱取消
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesDoctorsAdviceCancel(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesDoctorsAdviceUploadDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesDoctorsAdviceCancelParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("ydzy07");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesDoctorsAdviceUploadDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 病历上传
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesMedicalRecordUpload(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesMedicalRecordUploadDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesMedicalRecordUploadParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK018");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesMedicalRecordUploadDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 病历查询
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesMedicalRecordQuery(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesMedicalRecordQueryDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesMedicalRecordQueryParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK019");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesMedicalRecordQueryDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 病历删除
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam">Back</param>
+        /// <returns></returns>
+        public string DifferentPlacesMedicalRecordDelete(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesMedicalRecordQueryDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesMedicalRecordDeleteParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK020");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesMedicalRecordQueryDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 是否可回退查询
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesIsBackQuery(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesMedicalRecordQueryDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesIsBackQueryParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK021");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesMedicalRecordQueryDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 住院报销待遇审核情况查询
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesHospitalizationExamineQuery(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesHospitalizationExamineQueryDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesHospitalizationExamineQueryParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK022");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesHospitalizationExamineQueryDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 医疗机构月结算申请 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string MedicalInstitutionsMonthlySettlement(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new MedicalInstitutionsMonthlySettlementDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<MedicalInstitutionsMonthlySettlementParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK023");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new MedicalInstitutionsMonthlySettlementDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 医疗机构月结算申请回退
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string MedicalInstitutionsMonthlySettlementCancel(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new MedicalInstitutionsMonthlySettlementCancelDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<MedicalInstitutionsMonthlySettlementCancelParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK024");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new MedicalInstitutionsMonthlySettlementCancelDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 结算打印
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesSettlementPrint(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesSettlementPrintDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesSettlementPrintParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK026");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesSettlementPrintDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 门诊模拟结算
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string OutpatientSimulatedSettlement(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new OutpatientSimulatedSettlementDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<OutpatientSimulatedSettlementParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK025");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new OutpatientSimulatedSettlementDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 门诊结算
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string OutpatientSettlement(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new OutpatientSimulatedSettlementDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<OutpatientSettlementParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK027");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new OutpatientSimulatedSettlementDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 门诊结算回退
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string OutpatientSettlementCancel(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new OutpatientSimulatedSettlementDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<OutpatientSettlementCancelParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK028");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new OutpatientSimulatedSettlementDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 冲正交易
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesRushTransaction(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesRushTransactionDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesRushTransactionParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK029");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesRushTransactionDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 卡鉴权交易
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesCardAuthenticationTransaction(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesCardAuthenticationTransactionDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesCardAuthenticationTransactionParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK030");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesCardAuthenticationTransactionDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 科室信息上传
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesDepartmentInfoUpload(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesDepartmentInfoUploadDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesDepartmentInfoUploadParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK033");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesDepartmentInfoUploadDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
+        /// <summary>
+        /// 医生信息上传
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="baseParam"></param>
+        /// <returns></returns>
+        public string DifferentPlacesDoctorInfoUpload(string param, HisBaseParam baseParam)
+        {
+            var resultData = new ApiJsonResultData { Success = true };
+            var data = new DifferentPlacesDoctorInfoUploadDto();
+            try
+            {
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesDoctorInfoUploadParam>(param);
+
+                var xmlStr = XmlHelp.SaveXml(paramIni);
+                if (xmlStr)
+                {
+                    int result = MedicalInsuranceDifferentPlaces.yyjk_call("YYJK034");
+                    if (result == 1)
+                    {
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesDoctorInfoUploadDto());
+                        if (data.PO_FHZ == "1")
+                        {
+                            resultData.Data = JsonConvert.SerializeObject(data);
+                        }
+                        else
+                        {
+                            throw new Exception("病人身份证:" + baseParam.IdCard + ";" + data.PO_MSG);
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                Logs.LogWrite(new LogParam()
+                {
+                    Msg = e.Message,
+                    OperatorCode = baseParam.EmpID,
+                    Params = Logs.ToJson(param),
+                    ResultData = Logs.ToJson(data)
+
+                });
+
+            }
+            return JsonConvert.SerializeObject(resultData);
+        }
     }
+
 }
