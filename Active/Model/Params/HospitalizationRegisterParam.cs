@@ -20,7 +20,7 @@ namespace BenDingActive.Model.Params
             /// </summary>
             public string PI_CRBZ { get; set; }
             /// <summary>
-            /// 医疗类别11： 普通入院23:  市内转院住院14:  大病门诊15:  大病住院22:  急诊入院71： 顺产72： 剖宫产41： 病理剖宫产
+            /// 医疗类别11：普通入院23: 市内转院住院14: 大病门诊15: 大病住院22: 急诊入院71：顺产72：剖宫产41：病理剖宫产
             /// </summary>
             public string PI_YLLB { get; set; }
             /// <summary>

@@ -31,7 +31,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 费用明细条数
         /// </summary>
-        public string nums { get; set; }
+        public int nums { get; set; }
         /// <summary>
         /// 明细总额
         /// </summary>
@@ -40,5 +40,9 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// 结算经办人
         /// </summary>
         public string bkc131 { get; set; }
+        /// <summary>
+        /// 拟下个人账户金额，用于抵扣个人自付，金额额不能小于0也不能大于个人账户余额，也不能大于结算后的自付总金额
+        /// </summary>
+        public double bkc142 { get; set; }
     }
 }

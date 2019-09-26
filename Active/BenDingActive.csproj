@@ -61,6 +61,7 @@
     <Compile Include="Model\Dto\CostPreSettlementDto.cs" />
     <Compile Include="Model\Dto\CostSettlementDto.cs" />
     <Compile Include="Model\Dto\CostSettlementQueryDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlacesHospitalizationCancelDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentHospitalizationCancelDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentHospitalizationModifyDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentLeaveHospitalDto.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesCostSettlementDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesDoctorInfoUploadDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesDoctorsAdviceUploadDto.cs" />
+    <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesHospitalizationExamineQueryDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesHospitalizedSettlementCancelDto.cs" />
     <Compile Include="Model\Dto\DifferentPlaces\DifferentPlacesIsBackQueryDto.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesDoctorInfoUploadParam.cs" />
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesDoctorsAdviceCancelParam.cs" />
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesDoctorsAdviceUploadParam.cs" />
+    <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesHospitalizationCancelParam.cs" />
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesHospitalizationExamineQueryParam.cs" />
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesHospitalizedSettlementCancelParam.cs" />
     <Compile Include="Model\Params\DifferentPlaces\DifferentPlacesIsBackQueryParam.cs" />

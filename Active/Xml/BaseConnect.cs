@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BenDingActive.Model.Dto.DifferentPlaces;
+using BenDingActive.Service;
 
 namespace BenDingActive.Xml
 {
@@ -14,6 +16,10 @@ namespace BenDingActive.Xml
         public static void  Connect()
         {
             WorkersMedicalInsurance.ConnectAppServer_cxjb("cpq2677", "888888");
+        }
+        public static void DifferentPlacesConnect()
+        {
+            MedicalInsuranceDifferentPlaces.ConnectAppServer("cpq2677", "888888");
         }
         public static void SaveDataInfo(string dataType, string participationJson, string resultDataJson)
         {
@@ -36,6 +42,13 @@ namespace BenDingActive.Xml
             var data = HttpHelp.HttpPost(JsonConvert.SerializeObject(sendParam),
                 "SaveMedicalInsuranceDataAll", new ApiJsonResultData());
 
+        }
+
+        public static DifferentPlacesDto GetDifferentPlaces()
+        {
+            var data = new DifferentPlacesDto()
+                { };
+            return data;
         }
 
     }

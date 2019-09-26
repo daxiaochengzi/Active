@@ -31,7 +31,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string akc190 { get; set; }
         /// <summary>
-        /// 出院原因
+        /// 出院原因1好转、2康复、3转院、4死亡、5其它
         /// </summary>
         public string bkc031 { get; set; }
         /// <summary>

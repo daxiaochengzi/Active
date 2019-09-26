@@ -22,11 +22,11 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string aaz500 { get; set; }
         /// <summary>
-        /// 住院类型
+        /// 住院类型(1医疗2工伤医疗3工伤康复)
         /// </summary>
         public string aka042 { get; set; }
         /// <summary>
-        /// 参保地统筹编码
+        /// 参保地统筹编码(即病人所属行政区划代码)
         /// </summary>
         public string baa008 { get; set; }
         /// <summary>
@@ -64,7 +64,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string akc190 { get; set; }
         /// <summary>
-        /// aae030
+        /// 入院日期
         /// </summary>
         public string aae030 { get; set; }
         /// <summary>

@@ -9,6 +9,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
    public class DifferentPlacesDepartmentInfoUploadParam
     {
         public int nums { get; set; }
+        public DifferentPlacesDepartmentInfoUploadDataRow DataRow { get; set; }
     }
 
     public class DifferentPlacesDepartmentInfoUploadDataRow

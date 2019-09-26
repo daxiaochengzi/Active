@@ -37,7 +37,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string aka130 { get; set; }
         /// <summary>
-        /// 清算分中心
+        /// 清算分中心（医疗机构向市或者区（县）月结医疗费用
         /// </summary>
         public string bka013 { get; set; }
         /// <summary>
@@ -45,7 +45,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string bka015 { get; set; }
         /// <summary>
-        /// 门诊诊断编码1
+        /// 门诊诊断编码1 门诊诊断的病种代码，见病种代码icd-10，医院门诊主诊断不能为空，药店购药可为空。
         /// </summary>
         public string akc193 { get; set; }
         /// <summary>
@@ -65,7 +65,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 本次个人账户拟下账金额
         /// </summary>
-        public string bkc142 { get; set; }
+        public double bkc142 { get; set; }
         /// <summary>
         /// 经办人姓名
         /// </summary>
@@ -78,7 +78,9 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// 明细数量
         /// </summary>
 
-        public string nums { get; set; }
+        public int nums { get; set; }
+        public OutpatientSimulatedSettlementMzfymx Mzfymx { get; set; }
+
     }
 
     public class OutpatientSimulatedSettlementDisease
@@ -105,7 +107,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// </summary>
         public string akc076 { get; set; }
 
-        public OutpatientSimulatedSettlementMzfymx Mzfymx { get; set; }
+      
 
     }
 
@@ -123,7 +125,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 费用明细序号
         /// </summary>
-        public string bke019 { get; set; }
+        public int bke019 { get; set; }
         /// <summary>
         /// 全省统一收费目录编码
         /// </summary>
@@ -156,15 +158,15 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 数量
         /// </summary>
-        public string akc226 { get; set; }
+        public double akc226 { get; set; }
         /// <summary>
         /// 单价
         /// </summary>
-        public string akc225 { get; set; }
+        public double akc225 { get; set; }
         /// <summary>
         /// 费用总额
         /// </summary>
-        public string akc264 { get; set; }
+        public double akc264 { get; set; }
         /// <summary>
         /// 处方医生编码
         /// </summary>
@@ -190,13 +192,13 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 每次用量
         /// </summary>
-        public string bkc044 { get; set; }
+        public double bkc044 { get; set; }
         /// <summary>
         /// 与单次用量同单位规格
         /// </summary>
-        public string aka074 { get; set; }
+        public double aka074 { get; set; }
         /// <summary>
-        /// 医保项目分类
+        /// 医保项目分类注：ake003为药品时项目不能为空；为非药品项目时aka074_yn、aka070_yn、bkc044、bkc045、aka074尽量填写，可以为空。
         /// </summary>
         public string ake003 { get; set; }
     }

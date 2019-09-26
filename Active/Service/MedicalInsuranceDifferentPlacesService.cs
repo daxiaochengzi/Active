@@ -81,7 +81,7 @@ namespace BenDingActive.Service
             var data = new HospitalizationRegisterDifferentDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<HospitalizationRegisterParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<HospitalizationRegisterDifferentParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
@@ -131,10 +131,10 @@ namespace BenDingActive.Service
         public string DifferentPlacesHospitalizationCancel(string param, HisBaseParam baseParam)
         {
             var resultData = new ApiJsonResultData { Success = true };
-            var data = new SingleHospitalizationCancelDto();
+            var data = new DifferentPlacesHospitalizationCancelDto();
             try
             {
-                var paramIni = JsonConvert.DeserializeObject<SingleHospitalizationCancelParam>(param);
+                var paramIni = JsonConvert.DeserializeObject<DifferentPlacesHospitalizationCancelParam>(param);
 
                 var xmlStr = XmlHelp.SaveXml(paramIni);
                 if (xmlStr)
@@ -142,7 +142,7 @@ namespace BenDingActive.Service
                     int result = WorkersMedicalInsurance.CallService_cxjb("YYJK004");
                     if (result == 1)
                     {
-                        data = XmlHelp.DeSerializerModel(new SingleHospitalizationCancelDto());
+                        data = XmlHelp.DeSerializerModel(new DifferentPlacesHospitalizationCancelDto());
                         if (data.PO_FHZ == "1")
                         {
                             resultData.Data = JsonConvert.SerializeObject(data);

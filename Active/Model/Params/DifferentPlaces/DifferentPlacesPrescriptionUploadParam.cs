@@ -24,7 +24,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 数量
         /// </summary>
-        public string nums { get; set; }
+        public int nums { get; set; }
         /// <summary>
         /// 经办人
         /// </summary>
@@ -105,7 +105,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// 每次用量
         /// </summary>
 
-        public double bkc044 { get; set; }
+        public string bkc044 { get; set; }
         /// <summary>
         /// 用法
         /// </summary>

@@ -40,14 +40,14 @@ namespace BenDingActive.Model.Params.DifferentPlaces
         /// <summary>
         /// 费用总额
         /// </summary>
-        public string akc264 { get; set; }
+        public double akc264 { get; set; }
         /// <summary>
         /// 医保统筹支付合计（不包含个人账户支付）
         /// </summary>
-        public string akb068 { get; set; }
+        public double akb068 { get; set; }
         /// <summary>
         /// 个人账户支付
         /// </summary>
-        public string akb066 { get; set; }
+        public double akb066 { get; set; }
     }
 }

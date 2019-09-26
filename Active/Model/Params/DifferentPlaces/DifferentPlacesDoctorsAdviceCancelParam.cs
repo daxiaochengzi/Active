@@ -24,7 +24,7 @@ namespace BenDingActive.Model.Params.DifferentPlaces
 
     public class DifferentPlacesDoctorsAdviceCancelZyyzmx
     {
-        public DifferentPlacesDoctorsAdviceCancelDataRow Zyyzmx { get; set; }
+        public DifferentPlacesDoctorsAdviceCancelDataRow DataRow { get; set; }
     }
     public class DifferentPlacesDoctorsAdviceCancelDataRow
     {
