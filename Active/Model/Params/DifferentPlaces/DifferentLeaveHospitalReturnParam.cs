@@ -8,7 +8,6 @@ namespace BenDingActive.Model.Params.DifferentPlaces
 {
    public class DifferentLeaveHospitalReturnParam
     {
-        
         /// <summary>
         /// 参保人统筹地区编码
         /// </summary>

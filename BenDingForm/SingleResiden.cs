@@ -17,17 +17,24 @@ using Newtonsoft.Json;
 namespace BenDingForm
 {
     public partial class SingleResiden : Form
-    {/// <summary> 
-    /// 单病种
-    /// </summary>
+    {
+
+
+        KeyboardValue _keyboard = new KeyboardValue();
+      
+        /// <summary> 
+        /// 单病种
+        /// </summary>
         SingleResidentMedicalInsuranceService _single=new SingleResidentMedicalInsuranceService();
         ResidentMedicalInsuranceService _resident = new ResidentMedicalInsuranceService();
         public SingleResiden()
         {
             InitializeComponent();
+          
         }
+       
 
-        private void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
         {
             
             BaseConnect.Connect();
@@ -307,6 +314,28 @@ namespace BenDingForm
         {
             Form1 f2 = new Form1();
             f2.Show();
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+         
+            try
+            {
+                _keyboard.Start();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+            
+
+        }
+       
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

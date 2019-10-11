@@ -44,6 +44,9 @@
             this.button11 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -167,7 +170,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 195);
+            this.textBox1.Location = new System.Drawing.Point(12, 158);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(787, 156);
@@ -201,11 +204,41 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(412, 118);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "开启";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(247, 120);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 41;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(493, 118);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 42;
+            this.button12.Text = "关闭";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click_1);
+            // 
             // SingleResiden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button11);
@@ -247,5 +280,8 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button12;
     }
 }

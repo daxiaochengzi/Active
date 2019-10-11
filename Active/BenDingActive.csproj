@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -256,8 +257,13 @@
     <Compile Include="Service\WorkersMedicalInsurance.cs" />
     <Compile Include="Service\WorkersMedicalInsuranceService.cs" />
     <Compile Include="Xml\ApiJsonResultData.cs" />
+    <Compile Include="Xml\BardCodeHooK.cs" />
     <Compile Include="Xml\BaseConnect.cs" />
     <Compile Include="Xml\HttpHelp.cs" />
+    <Compile Include="Xml\IniFile.cs" />
+    <Compile Include="Xml\Keyboard.cs" />
+    <Compile Include="Xml\KeyboardHook.cs" />
+    <Compile Include="Xml\KeyboardValue.cs" />
     <Compile Include="Xml\LogParam.cs" />
     <Compile Include="Xml\Logs.cs" />
     <Compile Include="Xml\ValidXmlDto.cs" />
